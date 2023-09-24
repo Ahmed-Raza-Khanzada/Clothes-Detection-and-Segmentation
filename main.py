@@ -37,9 +37,9 @@ def make_segmentation(url,model_path= "detection_v8_models/100epochsbest.pt",my_
                     image = images_paths[i]
                     if cloth_name in my_cloths:
                         # continue
-                        image_ouput = segmentation(image,f"{image_name[:-4]}_100epochs_withoutcropping_{i}")
-                    else:
                         image_ouput = segmentation(image,f"{image_name[:-4]}_100epochs_{i}")
+                    else:
+                        image_ouput = segmentation(image,f"{image_name[:-4]}__withoutcropping_100epochs_{i}")
                     images_out_paths.append(image_ouput)
         if os.path.exists("runs/detect/predict"):
             shutil.rmtree("runs/detect/predict")
@@ -53,6 +53,6 @@ def make_segmentation(url,model_path= "detection_v8_models/100epochsbest.pt",my_
         os.mkdir(path)
 
 
-# if __name__ == "__main__":
-#     url = "https://media.istockphoto.com/id/1149035726/photo/white-t-shirt-on-a-young-man-isolated-on-white-background-front-and-back-view.jpg?b=1&s=612x612&w=0&k=20&c=Qj7zZVgvdLiM8Vl7NX79PxOHnIajIEMW7wULfqoYSGA="
-#     print(make_segmentation(url,model_path= "detection_v8_models/100epochsbest.pt"))
+if __name__ == "__main__":
+    url = "https://m.media-amazon.com/images/I/51FbtoBDKyL._AC_UY1100_.jpg"
+    print(make_segmentation(url,model_path= "detection_v8_models/100epochsbest.pt"))

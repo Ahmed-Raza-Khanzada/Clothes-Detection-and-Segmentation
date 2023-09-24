@@ -47,5 +47,5 @@ def segmentation(image,output_name = ""):
     print("Segmentation Results saved at: ",f'static/{output_name}.jpg')
     print("*"*40)
     
-    cv2.imwrite(f'static/{output_name}.jpg',mask_image)
+    cv2.imwrite(f'static/{output_name}.jpg',cv2.cvtColor(mask_image,cv2.COLOR_BGR2RGB))
     return f'static/{output_name}.jpg'
